@@ -55,7 +55,7 @@ export default {
                 { file: "/linkedin.png", alt: "linked in" }
             ],
             footerCategories: [
-                { title: "Company", links: [{ name: "About", to: "#" }, { name: "Pricing", to: "/pricing" }, { name: "Jobs", to: "#" }, { name: "Blog", to: "#" }, { name: "Careers", to: "#" }] },
+                { title: "Company", links: [{ name: "About", to: "/about" }, { name: "Pricing", to: "/pricing" }, { name: "Jobs", to: "#" }, { name: "Blog", to: "#" }, { name: "Careers", to: "#" }] },
                 { title: "Product", links: [{ name: "Sales software", to: "#" }, { name: "Features", to: "#" }, { name: "Privacy and security", to: "#" }, { name: "Marketplace", to: "#" }, { name: "Status", to: "#" }, { "name": "API", to: "#" }] },
                 { title: "Discover", links: [{ name: "Partner Program", to: "#" }, { name: "Get our newsletter", to: "#" }, { name: "Sale Pipeline Course", to: "#" }, { name: "What is CRM?", to: "#" }, { name: "CRM Comparison", to: "#" }, { name: "Resources", to: "#" }] },
                 { title: "Help Center", links: [{ name: "Community", to: "#" }, { name: "Knowledge Base", to: "#" }, { name: "Academy", to: "#" }, { name: "Support", to: "#" },] }
@@ -79,6 +79,7 @@ export default {
         font-weight: 400;
         font-size: 1.4rem;
         line-height: 2.4rem;
+        color: #404040;
     }
 
     &__socials {

@@ -1,5 +1,7 @@
 <template>
   <div>
+    <!-- HEADER -->
+
     <header class="home header-bg pb-6">
       <v-sheet class="header-bg px-2">
         <v-container>
@@ -40,7 +42,9 @@
         </v-container>
       </v-sheet>
     </header>
+
     <!-- BENEFITS SECTION -->
+
     <section>
       <v-sheet class="home__benefits primary-blue">
         <v-container class="pa-0">
@@ -87,32 +91,9 @@
           </v-row>
         </v-container>
       </section>
-      <section class="home__testimonials header-bg">
-        <v-container>
-          <div class="home__testimonials-head">
-            <h4 class="home__testimonials-title text-center mb-6">We love our Customers and They love us too</h4>
-            <nuxt-link class="home__testimonials-link m-auto" to="#">See all <v-icon color="accent-green"
-                small>mdi-chevron-right</v-icon></nuxt-link>
-          </div>
-          <v-row>
-            <v-col v-for="(testimonial, idx) in testimonials" :key="idx">
-              <v-img class="mt-11" :src="testimonial.imagePath" :alt="testimonial.alt" height="58" width="58"
-                contain></v-img>
-              <v-divider class="mb-4 mt-6"></v-divider>
-              <p class="home__testimonials-text text-left mb-6">{{ testimonial.testimonialText }}</p>
-              <div class="home__testimonials-content text-left d-flex">
-                <v-avatar class="mr-3">
-                  <img :src="testimonial.avatarPath" alt="" />
-                </v-avatar>
-                <div>
-                  <div class="home__testimonials-user mb-1 font-weight-bold">{{ testimonial.username }}</div>
-                  <p class="home__testimonials-position">{{ testimonial.userPosition }}</p>
-                </div>
-              </div>
-            </v-col>
-          </v-row>
-        </v-container>
-      </section>
+
+      <!-- WHAT'S NEW SECTION -->
+
       <section class="home__new">
         <v-container>
           <div>
@@ -131,13 +112,62 @@
               </v-col>
             </v-row>
           </div>
-          <div>
-            <div>
-              <h4></h4>
-              <p></p>
-            </div>
 
+          <!-- RESULS AND REVENUE SECTION OF WHAT'S NEW -->
+
+          <div class="home__results">
+            <div>
+              <h4 class="home__results-title mb-4">Real-life results and revenue</h4>
+              <p class="home__results-subtitle">See how companies like yours have smashed their sales success goals</p>
+            </div>
+            <v-row>
+              <v-col v-for="(results, idx) in resultsAndRevenue" :key="idx" cols="12">
+                <v-divider class="mb-8"></v-divider>
+                <v-row>
+                  <v-col>
+                    <div class="home__results-percent">{{ results.percent }}</div>
+                    <div class="home__results-subText">{{ results.subText }}</div>
+                    <div>
+                      <v-col></v-col>
+                      <p class="home__results-testimonial">{{ results.testimonial }}</p>
+                      <avatar-group :filePath="results.avatarPath" :username="results.username"
+                        :position="results.position"></avatar-group>
+                    </div>
+                  </v-col>
+                </v-row>
+                <div></div>
+              </v-col>
+            </v-row>
           </div>
+        </v-container>
+      </section>
+
+      <!-- TESTIMONIAL SECTION -->
+
+      <section class="home__testimonials header-bg">
+        <v-container>
+          <div class="home__testimonials-head">
+            <h4 class="home__testimonials-title text-center mb-6">We love our Customers and They love us too</h4>
+            <nuxt-link class="home__testimonials-link m-auto" to="#">See all <v-icon color="accent-green"
+                small>mdi-chevron-right</v-icon></nuxt-link>
+          </div>
+          <v-row>
+            <v-col class="mt-2" v-for="(testimonial, idx) in testimonials" :key="idx">
+              <v-img class="mt-11" :src="testimonial.imagePath" :alt="testimonial.alt" height="58" width="58"
+                contain></v-img>
+              <v-divider class="mb-4 mt-6"></v-divider>
+              <p class="home__testimonials-text text-left mb-6">{{ testimonial.testimonialText }}</p>
+              <div class="home__testimonials-content text-left d-flex">
+                <v-avatar class="mr-3">
+                  <img :src="testimonial.avatarPath" alt="" />
+                </v-avatar>
+                <div>
+                  <div class="home__testimonials-user mb-1 font-weight-bold">{{ testimonial.username }}</div>
+                  <p class="home__testimonials-position">{{ testimonial.userPosition }}</p>
+                </div>
+              </div>
+            </v-col>
+          </v-row>
         </v-container>
       </section>
     </main>
@@ -145,8 +175,13 @@
 </template>
 
 <script>
+import AvatarGroup from "../components/AvatarGroup.vue"
+
 export default {
   // name: 'IndexPage'
+  components: {
+    AvatarGroup,
+  },
   data() {
     return {
       imagePaths: [
@@ -201,6 +236,10 @@ export default {
           title: "service", imagePath: "man-walking-in-city.png", alt: "business man walking in city", text: "What Makes an Authentic Employee Profile, and Why…",
           post: { date: "07 Sep 2022,", by: "Joushua Nash" }
         }
+      ],
+      resultsAndRevenue: [
+        { percent: "$2.5M", subText: "Generate sales", testimonial: "Using Yoora CRM is one of the best decisions we've ever made. We've seen our annual revenue explode, and the outlook just keeps getting sunnier.", avatarPath: "/avatar-nellie.png", username: "Nellie Foster", position: "Founder & CEO, Foster Business Strategies" },
+        { percent: "45%", subText: "Grew Revenue", testimonial: "Yoora is created for sales people. It's the kind of software that just works. I don't have to try to make it work. It already does. It's just perfect.", avatarPath: "/avatar-gibbs.png", username: "Lawrence Gibbs", position: "Digital Marketing Director" }
       ]
     }
   },
@@ -309,6 +348,7 @@ export default {
   }
 
   //**** OFFERINGS SECTION ****/
+
   &__offerings-title {
     font-size: 2.4rem;
     line-height: 3.4rem;
@@ -327,6 +367,7 @@ export default {
   }
 
   //**** TESTIMONIALS SECTION ****//
+
   &__testimonials {
     padding: 7.2rem 2.4rem;
     text-align: center;
@@ -365,6 +406,7 @@ export default {
   }
 
   //**** WHATS NEW SECTION ****//
+
   &__new {
     padding: 7.2rem 0;
   }
@@ -408,6 +450,41 @@ export default {
     }
   }
 
+  //**** RESULST OF WHATS NEW SECTION ****//
 
+  &__results-title {
+    font-weight: 700;
+    font-size: 3.6rem;
+    line-height: 4.6rem;
+    letter-spacing: -0.05rem;
+    margin-top: 14.2rem;
+  }
+
+  &__results-subtitle {
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+  }
+
+  &__results-percent {
+    font-weight: 700;
+    font-size: 4.8rem;
+    line-height: 4.8rem;
+    letter-spacing: -.01rem;
+    margin-bottom: 1.9rem;
+  }
+
+  &__results-subText {
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 2.7rem;
+  }
+
+  &__results-testimonial {
+    font-weight: 500;
+    font-size: 2.4rem;
+    line-height: 3.4rem;
+    letter-spacing: -0.033rem;
+  }
 }
 </style>

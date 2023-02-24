@@ -1,7 +1,7 @@
 <template>
     <nav class="nav header-bg">
         <v-app-bar class="elevation-0 header-bg">
-            <v-container class="d-flex align-center">
+            <v-container class="d-flex align-center pa-0">
                 <nuxt-link to="/">
                     <v-img class="nav__logo" src="/yoora.png" alt="home">
                     </v-img>
